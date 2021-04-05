@@ -1,0 +1,25 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  category: one
+  name: MyString
+  price: 9.99
+  age: 1
+  weight: 1.5
+  date_of_birth: 2021-04-06
+  adopted_at: 2021-04-06 01:53:34
+  wakeup_time: 2021-04-06 01:53:34
+  desexed: false
+  description: MyText
+
+two:
+  category: two
+  name: MyString
+  price: 9.99
+  age: 1
+  weight: 1.5
+  date_of_birth: 2021-04-06
+  adopted_at: 2021-04-06 01:53:34
+  wakeup_time: 2021-04-06 01:53:34
+  desexed: false
+  description: MyText
