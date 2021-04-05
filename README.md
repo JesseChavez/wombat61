@@ -1,24 +1,64 @@
-# README
+# Sample Rails 6.1 app with SQL Server
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+This app was created with
 
-Things you may want to cover:
+```
+rails new wombat -d jdbc
+```
 
-* Ruby version
+Use the `activerecord-jdbc-alt-adapter` and `jdbc-mssql` gem to work with SQL Server
 
-* System dependencies
+```ruby
+platforms :jruby do
+  # Use jdbc as the database for Active Record
+  gem 'activerecord-jdbc-alt-adapter', '~> 61.0.0'
+  gem 'jdbc-mssql', '~> 0.9.0'
+end
+```
 
-* Configuration
+Changed database connections settings to
 
-* Database creation
 
-* Database initialization
+```yml
+# SQL Server (2012 or higher recommended)
+# Ensure to add the right port if you are
+# not using the default port 1433
 
-* How to run the test suite
+default: &default
+  adapter: sqlserver
+  encoding: utf8
 
-* Services (job queues, cache servers, search engines, etc.)
+development:
+  <<: *default
+  host: localhost
+  database: wombat_development
+  username: dev
+  password: password
 
-* Deployment instructions
+test:
+  <<: *default
+  host: localhost
+  database: wombat_test
+  username: test
+  password: password
 
-* ...
+production:
+  <<: *default
+  host: localhost
+  database: wombat_production
+  username: wombat
+  password: <%= ENV['WOMBAT_DATABASE_PASSWORD'] %>
+```
+
+
+Scaffold some imaginary pets records:
+
+
+```
+rails g scaffold category name:string description:text
+```
+
+
+```
+rails d scaffold pet category:references name:string 'price:decimal{18,2}' age:integer weight:float date_of_birth:date adopted_at:datetime wakeup_time:time desexed:boolean description:text
+```
