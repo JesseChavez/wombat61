@@ -3,7 +3,7 @@
 This app was created with
 
 ```
-rails new wombat -d jdbc
+rails new wombat -d jdbc --minimal
 ```
 
 Use the `activerecord-jdbc-alt-adapter` and `jdbc-mssql` gem to work with SQL Server
